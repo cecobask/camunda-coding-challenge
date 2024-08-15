@@ -1,4 +1,4 @@
-# camunda-coding-challenge
+# Senior Software Engineer, Kubernetes
 Interview hacking session with 45m duration. 
 
 ## Rules
