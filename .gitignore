@@ -1,0 +1,4 @@
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+6002913003/01-cluster-create/test-cluster-config

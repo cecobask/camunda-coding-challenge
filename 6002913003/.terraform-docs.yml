@@ -1,0 +1,14 @@
+formatter: markdown
+version: 0.18.0
+recursive:
+  enabled: true
+  include-main: false
+sections:
+  hide:
+    - modules
+    - requirements
+output:
+  file: README.md
+  mode: replace
+settings:
+  required: false

@@ -1,5 +1,22 @@
-# TODO: deploy nginx ingress controller in a given namespace of the kind cluster
-# Deployment needs to the done using the nginx-ingress helm chart (see
-# 01-cluster-create/main.tf for details)
-# Use nginx-helm-chart-values-template.yml to generate the values for the helm chart
-# (hint: use the Terraform's templatefile function)
+resource "kubernetes_namespace" "nginx_ingress" {
+  metadata {
+    name = var.nginx_ingress.namespace
+  }
+}
+
+resource "helm_release" "nginx_ingress" {
+  chart      = var.nginx_ingress.chart_name
+  name       = var.nginx_ingress.chart_name
+  namespace  = kubernetes_namespace.nginx_ingress.id
+  repository = var.nginx_ingress.chart_repository
+  values = [
+    templatefile(
+      "../modules/deploy/nginx-helm-chart-values-template.yaml",
+      {
+        ingressClassName = var.nginx_ingress.ingress_class_name,
+        replicas         = var.nginx_ingress.replicas
+      }
+    )
+  ]
+  version = var.nginx_ingress.chart_version
+}

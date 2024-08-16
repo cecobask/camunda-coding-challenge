@@ -1,1 +1,4 @@
-# TODO: create the required output(s) of the module here
+output "nginx_ingress_app_version" {
+  description = "Application version of the created NGINX ingress"
+  value       = helm_release.nginx_ingress.metadata[0].app_version
+}

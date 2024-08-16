@@ -55,3 +55,6 @@ full-test:  ## Run the full testing suite
 	$(MAKE) test || ( $(MAKE) end-log ; exit 1 )
 	$(MAKE) destroy || ( $(MAKE) end-log ; exit 1 )
 	$(MAKE) end-log
+
+tf-docs: ## Generate Terraform documentation
+	terraform-docs .
